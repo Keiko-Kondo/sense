@@ -62,10 +62,10 @@ https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn
 https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1760996567
 
 ## 画面遷移図
-https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1955300362
+https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1412272651
 
 ## 画面ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=234978806
+https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1466215404
 
 ## 使用予定Gem
 * carrierwave
