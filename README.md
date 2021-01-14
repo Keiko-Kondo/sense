@@ -59,10 +59,10 @@ https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn
 https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=777410998
 
 ## ER図
-https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1760996567
+https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1832849621
 
 ## 画面遷移図
-https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1412272651
+https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1335658528
 
 ## 画面ワイヤーフレーム
 https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1466215404
