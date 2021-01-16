@@ -63,7 +63,7 @@ https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn
 https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=777410998
 
 ## ER図
-https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1832849621
+https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1819190621
 
 ## 画面遷移図
 https://docs.google.com/spreadsheets/d/1_rSNAwUHlp-zXMYQf6IfuMc_LXPK4a942PwtmEJn0tU/edit#gid=1335658528
