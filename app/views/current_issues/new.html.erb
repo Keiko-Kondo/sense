@@ -1,0 +1,46 @@
+<p> 私は次のことを日本の社会課題だと考えます</p>
+
+<%= form_with(model: @current_issue, local: true) do |form| %>
+  <% if @current_issue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @current_issue.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @current_issue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="current_issue_genre">
+    <%= form.label :ジャンル %>
+    <%= form.text_field :genre %>
+  </div>
+  <div class="current_issue_title">
+    <%= form.label :タイトル %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="current_issue_issue">
+    <%= form.label :内容 %>
+    <%= form.text_field :issue %>
+  </div>
+  <div class="current_issue_taker">
+    <%= form.label :困っている人 %>
+    <%= form.text_field :taker %>
+  </div>
+  <div class="current_issue_giver">
+    <%= form.label :助けることができるだろう人・ちから %>
+    <%= form.text_field :giver %>
+  </div>
+  <div class="current_issue_idea">
+    <%= form.label :考えられる解決策 %>
+    <%= form.text_field :idea %>
+  </div>
+  <div class="current_issue_address">
+    <%= form.label :地域 %>
+    <%= form.text_field :address %>
+  </div>
+  <%= form.submit :登録 %>
+<% end %>
+
+<%= link_to 'いま一覧画面に戻る', current_issues_path %>

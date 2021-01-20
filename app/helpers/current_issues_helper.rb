@@ -1,0 +1,2 @@
+module CurrentIssuesHelper
+end

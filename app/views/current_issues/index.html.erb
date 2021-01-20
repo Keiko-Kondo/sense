@@ -1,0 +1,19 @@
+<h1>いまある社会課題</h1>
+
+<h1>一覧</h1>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>課題</th>
+  </tr>
+<% @current_issues.each do |issue| %>
+  <tr>
+    <td><%= issue.title %></td>
+    <td><%= issue.issue %></td>
+    <td><%= link_to '詳細を確認する', current_issue_path(issue.id) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br>
+<%= link_to '新しく課題を投稿する', new_current_issue_path %>
