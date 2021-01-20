@@ -1,4 +1,5 @@
-<h1>いまある社会課題</h1>
+<h1>いまある社会課題</h1
+<p><%= notice %></p>
 
 <h1>一覧</h1>
 <table>
@@ -11,6 +12,8 @@
     <td><%= issue.title %></td>
     <td><%= issue.issue %></td>
     <td><%= link_to '詳細を確認する', current_issue_path(issue.id) %></td>
+    <td><%= link_to "編集する", edit_current_issue_path(issue.id) %></td>
+    <td><%= link_to '削除する', current_issue_path(issue.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
   </tr>
 <% end %>
 </table>

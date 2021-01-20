@@ -1,0 +1,9 @@
+<h3>以下の内容で、送信する。</h3>
+<%= form_with(model: @current_issue, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :issue %>
+  <p>タイトル:<%= @current_issue.title %></p>
+  <p>本文:<%= @current_issue.issue %></p>
+  <%= form.submit  "登録する" %>
+<%= link_to '戻る', name: 'back' %>
+<% end %>
