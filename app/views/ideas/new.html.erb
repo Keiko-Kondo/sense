@@ -1,0 +1,21 @@
+<p>せんすの要（issue解決のアイディア/vision達成のアイディア）を提案する</p>
+
+<%= form_with(model: @idea, local: true) do |form| %>
+  <div class="idea_title">
+    <%= form.label :タイトル %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="idea_idea">
+    <%= form.label :アイディア %>
+    <%= form.text_field :idea %>
+  </div>
+
+  <div class="idea_expected_powere">
+    <%= form.label :欲しい骨 %>
+    <%= form.text_field :expected_power %>
+  </div>
+
+  <%= form.submit %>
+
+<% end %>

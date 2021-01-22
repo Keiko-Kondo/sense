@@ -43,7 +43,7 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
 
   def confirm
     @current_issue = CurrentIssue.new(current_issue_params)
-    render :new if @blog.invalid?
+    render :new if @current_issue.invalid?
   end
 
   private
