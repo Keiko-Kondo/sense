@@ -5,5 +5,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :ideas
+  resources :ideas do
+    collection do
+      post :confirm
+    end
+  end
 end

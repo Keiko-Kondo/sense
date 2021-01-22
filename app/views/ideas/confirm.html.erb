@@ -1,0 +1,11 @@
+<h3>以下の内容で、送信する。</h3>
+<%= form_with(model: @idea, local: true) do |form| %>
+  <%= form.hidden_field :title %>
+  <%= form.hidden_field :idea %>
+  <%= form.hidden_field :expected_power %>
+  <p>タイトル:<%= @idea.title %></p>
+  <p>せんすの要:<%= @idea.idea %></p>
+  <p>欲しい骨:<%= @idea.expected_power %></p>
+  <%= form.submit "登録" %>
+  <%= form.submit "戻る", name: 'back' %>
+<% end %>

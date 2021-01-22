@@ -1,0 +1,32 @@
+<%= form_with(model: @idea, local: true, url: choose_new_or_edit ) do |form| %>
+  <% if @idea.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @idea.errors.count %>件のエラーがあります。</h2>
+      <ul>
+        <% @idea.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="idea_title">
+    <%= form.label :タイトル %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="idea_idea">
+    <%= form.label :アイディア %>
+    <%= form.text_field :idea %>
+  </div>
+
+  <div class="idea_expected_powere">
+    <%= form.label :欲しい骨 %>
+    <%= form.text_field :expected_power %>
+  </div>
+
+  <%= form.submit %>
+
+<% end %>
+
+<%= link_to "一覧画面に戻る", ideas_path%>

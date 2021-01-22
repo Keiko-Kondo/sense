@@ -1,0 +1,21 @@
+<h1>せんす一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>アイディア内容</th>
+    <th>欲しい骨</th>
+  </tr>
+<% @ideas.each do |idea| %>
+  <tr>
+    <td><%= idea.title %></td>
+    <td><%= idea.idea %></td>
+    <td><%= idea.expected_power %></td>
+    <td><%= link_to '詳細を確認する', idea_path(idea.id) %></td>
+    <td><%= link_to '編集する', edit_idea_path(idea.id)%></td>
+    <td><%= link_to '削除する', idea_path(idea.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+<br>
+<%= link_to 'せんすの要を提案する', new_idea_path %>
