@@ -2,7 +2,6 @@
 <p><%= notice %></p>
 
 
-
 <h2>gmap</h2>
 <div id='map'></div>
 
@@ -30,9 +29,8 @@ function initMap(){
   });
 }
 </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
-
-
 
 
 <h1>一覧</h1>

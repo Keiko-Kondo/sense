@@ -1,0 +1,2 @@
+class FutureVisionsController < ApplicationController
+end
