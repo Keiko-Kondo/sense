@@ -1,0 +1,19 @@
+<h1>ちから一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>ジャンル</th>
+    <th>ちから</th>
+  </tr>
+<% @powers.each do |power| %>
+  <tr>
+    <td><%= power.genre %></td>
+    <td><%= power.power %></td>
+    <td><%= link_to '詳細を確認する', power_path(power.id) %></td>
+    <td><%= link_to "編集する", edit_power_path(power.id) %></td>
+    <td><%= link_to '削除する', power_path(power.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '新しくちからを投稿する', new_power_path %>

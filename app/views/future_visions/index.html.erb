@@ -1,0 +1,19 @@
+<h1>ビジョン一覧</h1>
+<p><%= notice %></p>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>ビジョン</th>
+  </tr>
+<% @future_visions.each do |vision| %>
+  <tr>
+    <td><%= vision.title %></td>
+    <td><%= vision.vision %></td>
+    <td><%= link_to '詳細を確認する', future_vision_path(vision.id) %></td>
+    <td><%= link_to "編集する", edit_future_vision_path(vision.id) %></td>
+    <td><%= link_to '削除する', future_vision_path(vision.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= link_to '新しくビジョンを投稿する', new_future_vision_path %>
