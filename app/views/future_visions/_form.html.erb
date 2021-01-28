@@ -1,0 +1,42 @@
+<%= form_with(model: @future_vision, local: true ,url: choose_new_or_edit) do |form| %>
+<% if @future_vision.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= @future_vision.errors.count %>件のエラーがあります。</h2>
+      <ul>
+      <% @future_vision.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="future_vision_genre">
+    <%= form.label :ジャンル %>
+    <%= form.text_field :genre %>
+  </div>
+  <div class="future_vision_title">
+    <%= form.label :ビジョンタイトル %>
+    <%= form.text_field :title %>
+  </div>
+  <div class="future_vision_vision">
+    <%= form.label :ビジョン %>
+    <%= form.text_field :vision %>
+  </div>
+  <div class="future_vision_given_person">
+    <%= form.label :喜ぶ人 %>
+    <%= form.text_field :given_person %>
+  </div>
+  <div class="future_vision_expected">
+    <%= form.label :ビジョンを達成できるだろう人・ちから %>
+    <%= form.text_field :expected %>
+  </div>
+  <div class="future_vision_possible_method">
+    <%= form.label :考えられる達成方法 %>
+    <%= form.text_field :possible_method %>
+  </div>
+  <div class="future_vision_address">
+    <%= form.label :地域 %>
+    <%= form.text_field :address %>
+  </div>
+  <%= form.submit %>
+<% end %>
+<%= link_to "一覧画面にもどる", future_visions_path %>

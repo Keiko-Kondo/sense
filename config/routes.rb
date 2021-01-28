@@ -1,3 +1,44 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+  resources :sessions, only: [:new, :create, :destroy]
+
+  root 'tops#index'
+
+
+
+  resources :current_issues do
+    collection do
+      post :confirm
+    end
+  end
+
+  resources :ideas do
+    collection do
+      post :confirm
+    end
+  end
+
+  resources :future_visions do
+    collection do
+      post :confirm
+    end
+  end
+
+  resources :future_visions do
+    resources :comments
+  end
+
+  resources :powers do
+    collection do
+      post :confirm
+    end
+  end
+
+  resources :users, only: [:new, :create, :show]
+
+  resources :conversations do
+    resources :messages
+  end
+  
 end
