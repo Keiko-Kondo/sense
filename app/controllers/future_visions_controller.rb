@@ -23,6 +23,8 @@ before_action :set_future_vision, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @comments = @future_vision.comments
+    @comment = @future_vision.comments.build
   end
 
   def edit

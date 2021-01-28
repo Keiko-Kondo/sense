@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
 
+
+  resources :sessions, only: [:new, :create, :destroy]
+
   root 'tops#index'
+
+
+
   resources :current_issues do
     collection do
       post :confirm
@@ -19,9 +25,15 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :future_visions do
+    resources :comments
+  end
+
   resources :powers do
     collection do
       post :confirm
     end
   end
+
+  resources :users, only: [:new, :create, :show]
 end
