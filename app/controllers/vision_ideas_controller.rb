@@ -1,0 +1,2 @@
+class VisionIdeasController < ApplicationController
+end

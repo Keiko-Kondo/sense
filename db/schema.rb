@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_29_143916) do
+ActiveRecord::Schema.define(version: 2021_01_29_155903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 2021_01_29_143916) do
     t.index ["user_id"], name: "index_future_visions_on_user_id"
   end
 
+  create_table "idea_powers", force: :cascade do |t|
+    t.integer "power_id"
+    t.integer "idea_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "ideas", force: :cascade do |t|
     t.string "title"
     t.text "idea"
@@ -72,6 +79,13 @@ ActiveRecord::Schema.define(version: 2021_01_29_143916) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_ideas_on_user_id"
+  end
+
+  create_table "issue_ideas", force: :cascade do |t|
+    t.integer "current_issue_id"
+    t.integer "idea_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -107,6 +121,13 @@ ActiveRecord::Schema.define(version: 2021_01_29_143916) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "vision_ideas", force: :cascade do |t|
+    t.integer "future_vision_id"
+    t.integer "idea_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "comments", "future_visions"

@@ -40,5 +40,11 @@ Rails.application.routes.draw do
   resources :conversations do
     resources :messages
   end
-  
+
+  resources :issue_ideas, only: [:create, :destroy]
+
+  resources :vision_ideas, only: [:create, :destroy]
+
+  resources :idea_powers, only: [:create, :destroy]
+
 end

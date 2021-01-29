@@ -1,5 +1,4 @@
 class Power < ApplicationRecord
-  validates :power, presence: true
-
-  belongs_to :user
+  has_many :idea_powers, dependent: :destroy
+  has_many :through_ideas, through: :idea_powers, source: :ideas
 end
