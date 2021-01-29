@@ -10,7 +10,7 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @current_issue = CurrentIssue.new(current_issue_params)
+    @current_issue = current_user.current_issues.build(current_issue_params)
     if params[:back]
       render :new
     else
@@ -42,7 +42,7 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
   end
 
   def confirm
-    @current_issue = CurrentIssue.new(current_issue_params)
+    @current_issue = current_user.current_issues.build(current_issue_params)
     render :new if @current_issue.invalid?
   end
 

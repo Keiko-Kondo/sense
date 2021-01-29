@@ -10,7 +10,7 @@ class IdeasController < ApplicationController
   end
 
   def create
-    @idea = Idea.new(idea_params)
+    @idea = current_user.ideas.build(idea_params)
     if params[:back]
       render :new
     else
@@ -42,8 +42,8 @@ class IdeasController < ApplicationController
   end
 
   def confirm
-    @idea = Idea.new(idea_params)
-    render :new if @blog.invalid?
+    @idea = current_user.ideas.build(idea_params)
+    render :new if @idea.invalid?
   end
 
   private

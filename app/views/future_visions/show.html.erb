@@ -5,6 +5,7 @@
   <div class="future_vision-text">
     <p><strong>タイトル</strong>：<%= @future_vision.title %></p>
     <p><strong>ビジョン</strong>：<%= @future_vision.vision %></p>
+    <p>登録者: <%= @future_vision.user.name %></p>
   </div>
   <p>コメント一覧</p>
   <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->

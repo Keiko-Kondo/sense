@@ -10,7 +10,7 @@ class PowersController < ApplicationController
     end
 
     def create
-      @power = Power.new(power_params)
+      @power = current_user.powers.build(power_params)
       if params[:back]
         render :new
       else
@@ -42,7 +42,7 @@ class PowersController < ApplicationController
     end
 
     def confirm
-      @power = Power.new(power_params)
+      @power = current_user.powers.build(power_params)
       render :new if @power.invalid?
     end
 

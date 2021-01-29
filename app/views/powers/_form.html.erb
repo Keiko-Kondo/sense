@@ -1,4 +1,4 @@
-<%= form_with(model: @power, local: true ,url: choose_new_or_edit) do |form| %>
+<%= form_with(model: @power, local: true ,url: choose_new_or_edit_powers) do |form| %>
 <% if @power.errors.any? %>
     <div id="error_explanation">
       <h2><%= @power.errors.count %>件のエラーがあります。</h2>
