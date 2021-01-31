@@ -10,4 +10,6 @@ class User < ApplicationRecord
   has_many :future_visions
   has_many :ideas
   has_many :powers
+
+  mount_uploader :image, ImageUploader
 end
