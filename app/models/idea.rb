@@ -1,5 +1,7 @@
 class Idea < ApplicationRecord
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 25 }
+  validates :idea, presence: true, length: { maximum: 200 }
+  validates :idea, length: { maximum: 200 }
 
   belongs_to :user
   has_many :issue_ideas, dependent: :destroy
