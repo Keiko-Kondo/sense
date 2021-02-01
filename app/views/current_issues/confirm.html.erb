@@ -1,9 +1,19 @@
 <h3>以下の内容で、送信する。</h3>
 <%= form_with(model: @current_issue, local: true) do |form| %>
+  <%= form.hidden_field :genre %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :issue %>
+  <%= form.hidden_field :taker %>
+  <%= form.hidden_field :giver %>
+  <%= form.hidden_field :idea %>
+  <%= form.hidden_field :address %>
+  <p>ジャンル:<%= @current_issue.genre %></p>
   <p>タイトル:<%= @current_issue.title %></p>
-  <p>本文:<%= @current_issue.issue %></p>
+  <p>内容:<%= @current_issue.issue %></p>
+  <p>困っている人:<%= @current_issue.taker %></p>
+  <p>助けることができるだろう人・ちから:<%= @current_issue.giver %></p>
+  <p>考えられる解決策:<%= @current_issue.idea %></p>
+  <p>地域:<%= @current_issue.address %></p>
   <%= form.submit  "登録する" %>
 <%= link_to '戻る', name: 'back' %>
 <% end %>
