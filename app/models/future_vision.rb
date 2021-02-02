@@ -10,5 +10,5 @@ class FutureVision < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :vision_ideas, dependent: :destroy
-  has_many :through_ideas, through: :vision_ideas, source: :ideas
+  has_many :through_ideas, through: :vision_ideas, source: :idea
 end

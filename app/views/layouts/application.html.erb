@@ -12,6 +12,7 @@
 
 <header>
  <%= image_tag 'sense.JPG', size: "70x70"%><p>sense</p>
+
   <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -23,17 +24,20 @@
       </button>
       <!-- <a class="navbar-brand" href="#">sense</a> -->
         <!-- <img src="/assets/sense_logo.JPG" alt=""> -->
-    </div>
-    <div id="gnavi" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li><a href="/">Home</a></li>
-        <li><a href="/current_issues">いま</a></li>
-        <li><a href="/ideas">せんす</a></li>
-        <li><a href="/future_visions">みらい</a></li>
-        <li><a href="/powers">ちから</a></li>
-        <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
+
+        <nav aria-label="breadcrumb">
+         <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a href="/">Home</a></li>
+           <li class="breadcrumb-item"><a href="/current_issues">いま</a></li>
+           <li class="breadcrumb-item"><a href="/ideas">せんす</a></li>
+           <li class="breadcrumb-item"><a href="/future_visions">みらい</a></li>
+           <li class="breadcrumb-item"><a href="/powers">ちから</a></li>
+
+
+
+
+
+      
 
     <% if logged_in? %>
       <li><%= link_to "Profile", user_path(current_user.id) %></li>
@@ -42,7 +46,7 @@
       <li><%= link_to "Sign up", new_user_path %></li>
       <li><%= link_to "Login", new_session_path %></li>
     <% end %>
-      </ul>
+      </ol>
     </div>
   </div>
 </nav>
@@ -50,8 +54,7 @@
 </header>
 
   <body>
-
-
     <%= yield %>
+
   </body>
 </html>

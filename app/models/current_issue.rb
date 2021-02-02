@@ -13,5 +13,5 @@ class CurrentIssue < ApplicationRecord
 
   belongs_to :user
   has_many :issue_ideas, dependent: :destroy
-  has_many :through_ideas, through: :issue_ideas, source: :ideas
+  has_many :through_ideas, through: :issue_ideas, source: :idea
 end

@@ -34,6 +34,7 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+    @ideas = @current_issue.through_ideas
   end
 
   def destroy
