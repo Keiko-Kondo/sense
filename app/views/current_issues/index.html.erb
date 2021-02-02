@@ -1,5 +1,6 @@
-<h4>いまある社会課題</h4>
 <p><%= notice %></p>
+<h4>いまある社会課題</h4>
+
 
 <div class="container">
   <div class="row">
@@ -23,6 +24,7 @@ function initMap(){
 
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: 40.7828, lng:-73.9653},
+
     zoom: 12,
   });
 
@@ -32,6 +34,60 @@ function initMap(){
   });
 }
 </script>
+
+
+
+<!-- <script>
+  function initMap() {
+    //地図を表示する領域の div 要素のオブジェクトを変数に代入
+    const target = document.getElementById('map');
+    // //マーカーのタイトルを設定
+    const title = $('.datespot-name').text();
+    //表示したい住所を取得
+    const inputAddress = document.getElementById('address').textContent;
+    //ジオコーディングのインスタンスの生成
+    const geocoder = new google.maps.Geocoder();
+
+    //geocoder.geocode() にアドレスを渡して、コールバック関数を記述して処理
+    geocoder.geocode({ address: inputAddress }, function(results, status){
+    //ステータスが OK で results[0] が存在すれば、地図を生成
+      if (status === 'OK' && results[0]){
+        //マップのインスタンスを変数に代入
+        const map = new google.maps.Map(target, {
+        //results[0].geometry.location に緯度・経度のオブジェクトが入っている
+          center: results[0].geometry.location,
+          zoom: 15
+        });
+        //マーカーの生成
+        const marker = new google.maps.Marker({
+          position: results[0].geometry.location,
+          map: map,
+        });
+        //取得した座標の生成
+        const latlng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+        //情報ウィンドウに表示するコンテンツを作成
+        const content = '<div id="map_content"><p>' + title + '<br/>' + inputAddress + '<br/><a href="https://maps.google.co.jp/maps?q=' + latlng + '&iwloc=J" target="_blank" rel="noopener noreferrer">Googleマップで見る</a></p></div>';
+        //情報ウィンドウのインスタンスを生成
+        var infowindow = new google.maps.InfoWindow({
+          content: content,
+        });
+        //marker をクリックすると情報ウィンドウを表示(リスナーの登録）
+        google.maps.event.addListener(marker, 'click', function() {
+          //第2引数にマーカーを指定して紐付け
+          infowindow.open(map, marker);
+        });
+      } else {
+      //ステータスが OK 以外の場合や results[0] が存在しなければ、アラートを表示して処理を中断
+        alert("住所から位置の取得ができませんでした。: " + status);
+        return;
+      }
+    });
+  }
+
+</script> -->
+
+
+
 
 <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
 
@@ -48,9 +104,11 @@ function initMap(){
   <tr>
     <td><%= issue.title %></td>
     <td><%= issue.issue %></td>
-    <td><%= link_to '詳細', current_issue_path(issue.id) %></td>
-    <td><%= link_to "編集", edit_current_issue_path(issue.id) %></td>
-    <td><%= link_to '削除', current_issue_path(issue.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '詳細', current_issue_path(issue.id) %></button></td>
+  <% if issue.user == current_user %>
+    <td><button type="button" class="btn btn-secondary"><%= link_to "編集", edit_current_issue_path(issue.id) %></button></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '削除', current_issue_path(issue.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></button></td>
+  <% end %>
   </tr>
 <% end %>
 </table>
@@ -60,4 +118,4 @@ function initMap(){
 </div>
 
 <br>
-<%= link_to '新しく課題を投稿する', new_current_issue_path %>
+<div class="toukou"><button type="button" class="btn-outline-primary"><%= link_to '新しく課題を投稿する', new_current_issue_path %></button></div>
