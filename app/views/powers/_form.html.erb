@@ -11,16 +11,21 @@
   <% end %>
   <div class="power_genre">
     <%= form.label :ジャンル %>
+    <br>
     <%= form.text_field :genre %>
   </div>
   <div class="power_power">
     <%= form.label :ちから %>
+    <br>
     <%= form.text_field :power %>
   </div>
   <div class="power_address">
     <%= form.label :地域 %>
+    <br>
     <%= form.text_field :address %>
   </div>
+  <br>
   <%= form.submit %>
 <% end %>
+<br>
 <%= link_to "一覧画面にもどる", powers_path %>

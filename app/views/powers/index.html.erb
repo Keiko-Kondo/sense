@@ -1,5 +1,10 @@
 <h1>ちから一覧</h1>
 <p><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+<div class="col-xs-6"><%= image_tag 'hone.jpg', size: "300x300"%><p>せんす</p></div>
+<div class="col-xs-6">
 <table>
   <tr>
     <th>ジャンル</th>
@@ -9,11 +14,16 @@
   <tr>
     <td><%= power.genre %></td>
     <td><%= power.power %></td>
-    <td><%= link_to '詳細を確認する', power_path(power.id) %></td>
-    <td><%= link_to "編集する", edit_power_path(power.id) %></td>
-    <td><%= link_to '削除する', power_path(power.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '詳細', power_path(power.id) %></button></td>
+<% if power.user == current_user %>
+    <td><button type="button" class="btn btn-secondary"><%= link_to "編集", edit_power_path(power.id) %></button></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '削除', power_path(power.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></button></td>
+<% end %>
   </tr>
 <% end %>
 </table>
+</div>
 
-<%= link_to '新しくちからを投稿する', new_power_path %>
+</div>
+
+<div class="toukou"><button type="button" class="btn-outline-primary"><%= link_to '新しくちからを投稿する', new_power_path %></button></div>

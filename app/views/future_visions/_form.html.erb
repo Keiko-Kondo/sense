@@ -9,30 +9,50 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="container">
+    <div class="row">
+<div class="col-xs-6">
+
+
   <div class="future_vision_genre">
     <%= form.label :ジャンル %>
+    <br>
     <%= form.text_field :genre %>
   </div>
   <div class="future_vision_title">
     <%= form.label :ビジョンタイトル %>
+    <br>
     <%= form.text_field :title %>
   </div>
   <div class="future_vision_vision">
     <%= form.label :ビジョン %>
+    <br>
     <%= form.text_field :vision %>
   </div>
   <div class="future_vision_expected">
     <%= form.label :ビジョンを達成できるだろう人・ちから %>
+    <br>
     <%= form.text_field :expected %>
   </div>
+  </div>
+  <div class="col-xs-6">
+
   <div class="future_vision_possible_method">
     <%= form.label :考えられる達成方法 %>
+    <br>
     <%= form.text_field :possible_method %>
   </div>
   <div class="future_vision_address">
     <%= form.label :地域 %>
+    <br>
     <%= form.text_field :address %>
   </div>
+  <br>
   <%= form.submit %>
 <% end %>
-<%= link_to "一覧画面にもどる", future_visions_path %>
+
+  </div>
+</div>
+
+<div class="toukou"><button type="button" class="btn-outline-primary"><%= link_to "一覧画面にもどる", future_visions_path %></button></div>

@@ -14,6 +14,6 @@
   <p>助けることができるだろう人・ちから:<%= @current_issue.giver %></p>
   <p>考えられる解決策:<%= @current_issue.idea %></p>
   <p>地域:<%= @current_issue.address %></p>
-  <%= form.submit  "登録する" %>
-<%= link_to '戻る', name: 'back' %>
+  <%= form.submit "登録" %>
+  <%= form.submit "戻る", name: 'back' %>
 <% end %>

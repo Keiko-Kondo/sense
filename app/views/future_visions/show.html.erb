@@ -1,12 +1,24 @@
-<h1>詳細画面</h1>
+<p id="notice"><%= notice %></p>
+
+<h4>詳細画面</h4>
 
 <div class="container">
-  <p id="notice"><%= notice %></p>
+
+
+
+    <div class="row">
+
+  <div class="col-xs-4">
   <div class="future_vision-text">
     <p><strong>タイトル</strong>：<%= @future_vision.title %></p>
     <p><strong>ビジョン</strong>：<%= @future_vision.vision %></p>
     <p>登録者: <%= @future_vision.user.name %></p>
+
+    <%= link_to '編集', edit_future_vision_path(@future_vision) %> |
+    <%= link_to '戻る', future_visions_path %>
   </div>
+  </div>
+  <div class="col-xs-4">
   <p>コメント一覧</p>
   <!-- このcomments_areaというHTMLのidを取得して、そのdivの部分だけを更新する -->
   <div id="comments_area">
@@ -15,6 +27,15 @@
   </div>
   <!-- コメント入力欄をブログの詳細ページに表示するためのrender -->
   <%= render partial: 'comments/form', locals: { comment: @comment, future_vision: @future_vision } %>
-  <%= link_to '編集', edit_future_vision_path(@future_vision) %> |
-  <%= link_to '戻る', future_visions_path %>
+
+
+
+
+
+</div>
+  <div class="col-xs-4">
+    <p>提案されたせんす</p>
+
+  </div>
+</div>
 </div>

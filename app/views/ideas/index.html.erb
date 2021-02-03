@@ -1,5 +1,11 @@
-<h1>せんす一覧</h1>
+
 <p><%= notice %></p>
+
+<div class="container">
+  <div class="row">
+<div class="col-xs-6"><%= image_tag 'kaname.jpg', size: "300x300"%><p>せんす</p></div>
+<div class="col-xs-6">
+<h3>せんす一覧</h3>
 <table>
   <tr>
     <th>タイトル</th>
@@ -11,11 +17,18 @@
     <td><%= idea.title %></td>
     <td><%= idea.idea %></td>
     <td><%= idea.expected_power %></td>
-    <td><%= link_to '詳細を確認する', idea_path(idea.id) %></td>
-    <td><%= link_to '編集する', edit_idea_path(idea.id)%></td>
-    <td><%= link_to '削除する', idea_path(idea.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '詳細', idea_path(idea.id) %></button></td>
+      <% if idea.user == current_user %>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '編集', edit_idea_path(idea.id)%></button></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '削除', idea_path(idea.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></button></td>
+<% end %>
   </tr>
 <% end %>
+
+
 </table>
+</div>
+</div>
+</div>
 <br>
-<%= link_to 'せんすの要を提案する', new_idea_path %>
+<div class="toukou"><button type="button" class="btn-outline-primary"><%= link_to 'せんすの要を提案する', new_idea_path %></button></div>

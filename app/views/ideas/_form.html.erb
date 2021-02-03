@@ -10,23 +10,35 @@
     </div>
   <% end %>
 
+  <div class="container">
+    <div class="row">
+  <div class="col-xs-6"><%= image_tag 'kaname.jpg', size: "300x300"%><p>せんす</p></div>
+  <div class="col-xs-6">
+
   <div class="idea_title">
     <%= form.label :タイトル %>
+    <br>
     <%= form.text_field :title %>
   </div>
 
   <div class="idea_idea">
     <%= form.label :アイディア %>
+    <br>
     <%= form.text_field :idea %>
   </div>
 
   <div class="idea_expected_powere">
     <%= form.label :欲しい骨 %>
+    <br>
     <%= form.text_field :expected_power %>
   </div>
-
+<br>
   <%= form.submit %>
 
-<% end %>
+<br>
 
+<% end %>
+<br>
 <%= link_to "一覧画面に戻る", ideas_path%>
+
+  </div>

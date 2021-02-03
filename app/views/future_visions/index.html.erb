@@ -1,5 +1,50 @@
-<h1>ビジョン一覧</h1>
 <p><%= notice %></p>
+
+<h4>ビジョン一覧</h4>
+
+
+<div class="container">
+  <div class="row">
+
+<div class="col-xs-6">
+<p>地図で見る</p>
+<div id='map'></div>
+
+<style>
+#map {
+  height: 350px;
+  width: 350px;
+}
+</style>
+
+<script>
+let map
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 40.7828, lng:-73.9653},
+
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: 40.7828, lng:-73.9653},
+    map: map
+  });
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+</div>
+<div class="col-xs-6">
+
+
+
+
+
 <table>
   <tr>
     <th>タイトル</th>
@@ -9,11 +54,19 @@
   <tr>
     <td><%= vision.title %></td>
     <td><%= vision.vision %></td>
-    <td><%= link_to '詳細を確認する', future_vision_path(vision.id) %></td>
-    <td><%= link_to "編集する", edit_future_vision_path(vision.id) %></td>
-    <td><%= link_to '削除する', future_vision_path(vision.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '詳細', future_vision_path(vision.id) %></button></td>
+<% if vision.user == current_user %>
+    <td><button type="button" class="btn btn-secondary"><%= link_to "編集", edit_future_vision_path(vision.id) %></button></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '削除', future_vision_path(vision.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></button></td>
+<% end %>
   </tr>
 <% end %>
 </table>
+</div>
+<br>
 
-<%= link_to '新しくビジョンを投稿する', new_future_vision_path %>
+</div>
+<br>
+
+
+<div class="toukou"><button type="button" class="btn-outline-primary"><%= link_to '新しくビジョンを投稿する', new_future_vision_path %></button></div>
