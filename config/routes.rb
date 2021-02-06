@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
 
+
+  get '/ideas/new/:current_issue_id', to: 'ideas#new', as: :new_idea
+
+
   resources :ideas do
     collection do
       post :confirm

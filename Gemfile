@@ -9,6 +9,7 @@ gem 'bcrypt', '3.1.11'
 
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'gon'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

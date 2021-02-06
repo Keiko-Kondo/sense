@@ -3,6 +3,10 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
 
   def index
     @current_issues = CurrentIssue.all
+    @current_issues_address = CurrentIssue.all.select('title', 'address', 'latitude', 'longitude')
+
+    gon.current_issues = @current_issues_address
+
   end
 
   def new
@@ -34,7 +38,7 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-    @ideas = @current_issue.through_ideas
+     @ideas = @current_issue.through_ideas
   end
 
   def destroy

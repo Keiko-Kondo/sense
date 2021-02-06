@@ -1,4 +1,4 @@
-<%= form_with(model: @idea, local: true, url: choose_new_or_edit_ideas ) do |form| %>
+<%= form_with(model: @idea, local: true, url: choose_new_or_edit_ideas(@current_issue.id) ) do |form| %>
   <% if @idea.errors.any? %>
     <div id="error_explanation">
       <h2><%= @idea.errors.count %>件のエラーがあります。</h2>
@@ -33,6 +33,8 @@
     <%= form.text_field :expected_power %>
   </div>
 <br>
+    <%= form.hidden_field :current_issue_id %>
+
   <%= form.submit %>
 
 <br>
