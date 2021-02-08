@@ -12,4 +12,7 @@ class Idea < ApplicationRecord
 
   has_many :idea_powers, dependent: :destroy
   has_many :through_powers, through: :idea_powers, source: :power
+
+
+  belongs_to :current_issue, inverse_of: :idea
 end

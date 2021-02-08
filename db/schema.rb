@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 2021_01_31_122105) do
     t.string "expected"
     t.text "possible_method"
     t.string "address"
-    t.string "latitude"
-    t.string "longitude"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"

@@ -3,6 +3,8 @@ before_action :set_future_vision, only: [:show, :edit, :update, :destroy]
 
   def index
     @future_visions = FutureVision.all
+    @future_visions_address = FutureVision.all.select('title', 'address', 'latitude', 'longitude')
+    gon.future_visions = @future_visions_address
   end
 
   def new

@@ -7,6 +7,7 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
 
     gon.current_issues = @current_issues_address
 
+
   end
 
   def new

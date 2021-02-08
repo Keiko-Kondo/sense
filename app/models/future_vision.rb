@@ -7,6 +7,9 @@ class FutureVision < ApplicationRecord
   validates :address, length: { maximum: 20 }
 
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :vision_ideas, dependent: :destroy
