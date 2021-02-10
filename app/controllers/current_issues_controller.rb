@@ -3,6 +3,11 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
 
   def index
     @current_issues = CurrentIssue.all
+    @current_issues_address = CurrentIssue.all.select('title', 'address', 'latitude', 'longitude')
+
+    gon.current_issues = @current_issues_address
+
+
   end
 
   def new
@@ -10,7 +15,7 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @current_issue = CurrentIssue.new(current_issue_params)
+    @current_issue = current_user.current_issues.build(current_issue_params)
     if params[:back]
       render :new
     else
@@ -34,6 +39,8 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
   end
 
   def show
+
+     @ideas = @current_issue.issue_ideas
   end
 
   def destroy
@@ -42,13 +49,13 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
   end
 
   def confirm
-    @current_issue = CurrentIssue.new(current_issue_params)
+    @current_issue = current_user.current_issues.build(current_issue_params)
     render :new if @current_issue.invalid?
   end
 
   private
   def current_issue_params
-    params.require(:current_issue).permit(:genre, :title, :issue, :taker, :giver, :idea, :address, :latitude, :longitude)
+    params.require(:current_issue).permit(:genre, :title, :issue, :taker, :giver, :address, :latitude, :longitude)
   end
 
   def set_current_issue

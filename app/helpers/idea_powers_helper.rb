@@ -1,0 +1,2 @@
+module IdeaPowersHelper
+end

@@ -1,9 +1,17 @@
 <h3>以下の内容で、送信する。</h3>
 <%= form_with(model: @future_vision, local: true) do |form| %>
+　<%= form.hidden_field :genre %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :vision %>
+  <%= form.hidden_field :expected %>
+  <%= form.hidden_field :possible_method %>
+  <%= form.hidden_field :address %>
+  <p>ジャンル:<%= @future_vision.genre %></p>
   <p>タイトル:<%= @future_vision.title %></p>
   <p>ビジョン:<%= @future_vision.vision %></p>
+  <p>ビジョンを達成できるだろう人・ちから:<%= @future_vision.expected %></p>
+  <p>考えられる達成方法:<%= @future_vision.possible_method %></p>
+  <p>地域:<%= @future_vision.address %></p>
   <%= form.submit  "登録する" %>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>

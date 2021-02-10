@@ -1,19 +1,309 @@
-<h1>ビジョン一覧</h1>
 <p><%= notice %></p>
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>ビジョン</th>
-  </tr>
-<% @future_visions.each do |vision| %>
-  <tr>
-    <td><%= vision.title %></td>
-    <td><%= vision.vision %></td>
-    <td><%= link_to '詳細を確認する', future_vision_path(vision.id) %></td>
-    <td><%= link_to "編集する", edit_future_vision_path(vision.id) %></td>
-    <td><%= link_to '削除する', future_vision_path(vision.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></td>
-  </tr>
-<% end %>
-</table>
+<h4>ビジョン一覧</h4>
 
-<%= link_to '新しくビジョンを投稿する', new_future_vision_path %>
+
+<div class="container">
+  <div class="row">
+<div class="col-xs-6">
+
+<p>地図で見る</p>
+
+<div id="sample"></div>
+
+<style media="screen">
+
+#sample {
+ width: 300px;
+   height: 300px;
+}
+</style>
+
+
+
+<script>
+var map;
+var marker = [];
+var infoWindow = [];
+var markerData = Array.from(gon.future_visions);
+
+
+
+
+// for( var i=0; i<markerData.length; i++) {
+//   console.log( markerData[i] );
+// }
+
+// var markerData = [ // マーカーを立てる場所名・緯度・経度
+//   {
+//        name: 'TAM 東京',
+//        lat: 35.6954806,
+//         lng: 139.76325010000005,
+//         icon: 'tam.png' // TAM 東京のマーカーだけイメージを変更する
+//  }, {
+//         name: '小川町駅',
+//      lat: 35.6951212,
+//         lng: 139.76610649999998
+//  }, {
+//         name: '淡路町駅',
+//      lat: 35.69496,
+//       lng: 139.76746000000003
+//  }, {
+//         name: '御茶ノ水駅',
+//         lat: 35.6993529,
+//         lng: 139.76526949999993
+//  }, {
+//         name: '神保町駅',
+//      lat: 35.695932,
+//      lng: 139.75762699999996
+//  }, {
+//         name: '新御茶ノ水駅',
+//        lat: 35.696932,
+//      lng: 139.76543200000003
+//  }
+// ];
+
+function initMap() {
+ // 地図の作成
+    var mapLatLng = new google.maps.LatLng({lat: markerData[0]['latitude'], lng: markerData[0]['longitude']}); // 緯度経度のデータ作成
+   map = new google.maps.Map(document.getElementById('sample'), { // #sampleに地図を埋め込む
+     // center: mapLatLng, // 地図の中心を指定
+      center: {lat: 35.680976, lng:139.763784},
+      zoom: 4 // 地図のズームを指定
+   });
+
+ // マーカー毎の処理
+ for (var i = 0; i < markerData.length; i++) {
+        markerLatLng = new google.maps.LatLng({lat: markerData[i]['latitude'], lng: markerData[i]['longitude']}); // 緯度経度のデータ作成
+        marker[i] = new google.maps.Marker({ // マーカーの追加
+         position: markerLatLng, // マーカーを立てる位置を指定
+            map: map // マーカーを立てる地図を指定
+       });
+
+     infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+         content: '<div class="sample">' + markerData[i]['address'] + '<br>' + markerData[i]['title']+ '</div>' // 吹き出しに表示する内容
+       });
+
+     markerEvent(i); // マーカーにクリックイベントを追加
+ }
+
+   marker[0].setOptions({// TAM 東京のマーカーのオプション設定
+        icon: {
+         url: markerData[0]['icon']// マーカーの画像を変更
+       }
+   });
+}
+
+// マーカーにクリックイベントを追加
+function markerEvent(i) {
+    marker[i].addListener('click', function() { // マーカーをクリックしたとき
+      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+  });
+}
+
+
+</script>
+
+<!-- <input id="address" type="textbox" value="○○県●●市">
+<input type="button" value="検索" onclick="codeAddress()">
+<div id="display"></div>
+
+
+<div id='map'></div>
+
+
+<style>
+#map {
+  height: 350px;
+  width: 350px;
+}
+</style>
+
+<script>
+let map
+let geocoder
+const display = document.getElementById('display')
+
+var latlng = new google.maps.LatLng(35.681236,139.767125);
+let marker = [];
+let infoWindow = [];
+var markerData = [ // マーカーを立てる場所名・緯度・経度
+ {
+        name: '東京駅',
+     lat: 35.681236,
+        lng: 139.767125
+ }, {
+        name: '淡路町駅',
+     lat: 35.69496,
+      lng: 139.76746000000003
+ }, {
+        name: '御茶ノ水駅',
+        lat: 35.6993529,
+        lng: 139.76526949999993
+ }, {
+        name: '神保町駅',
+     lat: 35.695932,
+     lng: 139.75762699999996
+ }, {
+        name: '新御茶ノ水駅',
+       lat: 35.696932,
+     lng: 139.76543200000003
+ }
+];
+
+function initMap(){
+  var mapLatLng = new google.maps.LatLng({lat: markerData[0]['lat'], lng: markerData[0]['lng']}); // 緯度経度のデータ作成
+  geocoder = new google.maps.Geocoder()
+
+
+   map = new google.maps.Map(document.getElementById('map'), { // #sampleに地図を埋め込む
+     center: mapLatLng, // 地図の中心を指定
+      zoom: 14 // 地図のズームを指定
+   });
+
+ // マーカー毎の処理
+ for (var i = 0; i < markerData.length; i++) {
+        markerLatLng = new google.maps.LatLng({lat: markerData[i]['lat'], lng: markerData[i]['lng']}); // 緯度経度のデータ作成
+        marker[i] = new google.maps.Marker({ // マーカーの追加
+         position: markerLatLng, // マーカーを立てる位置を指定
+            map: map // マーカーを立てる地図を指定
+       });
+
+     infoWindow[i] = new google.maps.InfoWindow({ // 吹き出しの追加
+         content: '<div class="map">' + markerData[i]['name'] + '</div>' // 吹き出しに表示する内容
+       });
+
+     markerEvent(i); // マーカーにクリックイベントを追加
+ }
+}
+
+// マーカーにクリックイベントを追加
+function markerEvent(i) {
+    marker[i].addListener('click', function() { // マーカーをクリックしたとき
+      infoWindow[i].open(map, marker[i]); // 吹き出しの表示
+  });
+
+
+}
+
+// マーカーにクリックイベントを追加
+
+  // marker = new google.maps.Marker({
+  //   position:  {lat: 35.6940309, lng:139.7537719},
+  //   map: map
+  // });
+
+  // infoWindow = new google.maps.InfoWindow({ // 吹き出しの追加
+  //       content: '<div class="map">mmm</div>' // 吹き出しに表示する内容
+  // });
+
+
+}
+
+
+
+// function codeAddress(){
+//   let inputAddress = document.getElementById('address').value;
+//
+//   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+//     if (status == 'OK') {
+//       map.setCenter(results[0].geometry.location);
+//       map.setZoom(20);
+//
+//       // var marker = new google.maps.Marker({
+//       //     map: map,
+//       //     position: results[0].geometry.location
+//       // });
+//        display.textContent = "検索結果：" + results[ 0 ].geometry.location
+//     } else {
+//       alert('該当する結果がありませんでした：' + status);
+//     }
+//   });
+// }
+</script>
+
+
+
+
+<!-- <script>
+  function initMap() {
+    //地図を表示する領域の div 要素のオブジェクトを変数に代入
+    const target = document.getElementById('map');
+    // //マーカーのタイトルを設定
+    const title = $('.datespot-name').text();
+    //表示したい住所を取得
+    const inputAddress = document.getElementById('address').textContent;
+    //ジオコーディングのインスタンスの生成
+    const geocoder = new google.maps.Geocoder();
+
+    //geocoder.geocode() にアドレスを渡して、コールバック関数を記述して処理
+    geocoder.geocode({ address: inputAddress }, function(results, status){
+    //ステータスが OK で results[0] が存在すれば、地図を生成
+      if (status === 'OK' && results[0]){
+        //マップのインスタンスを変数に代入
+        const map = new google.maps.Map(target, {
+        //results[0].geometry.location に緯度・経度のオブジェクトが入っている
+          center: results[0].geometry.location,
+          zoom: 15
+        });
+        //マーカーの生成
+        const marker = new google.maps.Marker({
+          position: results[0].geometry.location,
+          map: map,
+        });
+        //取得した座標の生成
+        const latlng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+        //情報ウィンドウに表示するコンテンツを作成
+        const content = '<div id="map_content"><p>' + title + '<br/>' + inputAddress + '<br/><a href="https://maps.google.co.jp/maps?q=' + latlng + '&iwloc=J" target="_blank" rel="noopener noreferrer">Googleマップで見る</a></p></div>';
+        //情報ウィンドウのインスタンスを生成
+        var infowindow = new google.maps.InfoWindow({
+          content: content,
+        });
+        //marker をクリックすると情報ウィンドウを表示(リスナーの登録）
+        google.maps.event.addListener(marker, 'click', function() {
+          //第2引数にマーカーを指定して紐付け
+          infowindow.open(map, marker);
+        });
+      } else {
+      //ステータスが OK 以外の場合や results[0] が存在しなければ、アラートを表示して処理を中断
+        alert("住所から位置の取得ができませんでした。: " + status);
+        return;
+      }
+    });
+  }
+
+</script> --> -->
+
+
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
+
+</div>
+
+    <div class="col-xs-6">
+      <table>
+        <tr>
+          <th>タイトル</th>
+          <th>ビジョン</th>
+        </tr>
+        <% @future_visions.each do |vision| %>
+        <tr>
+          <td><%= vision.title %></td>
+          <td><%= vision.vision %></td>
+          <td><button type="button" class="btn btn-secondary"><%= link_to '詳細', future_vision_path(vision.id) %></button></td>
+          <% if vision.user == current_user %>
+            <td><button type="button" class="btn btn-secondary"><%= link_to "編集", edit_future_vision_path(vision.id) %></button></td>
+            <td><button type="button" class="btn btn-secondary"><%= link_to '削除', future_vision_path(vision.id), method: :delete ,data: { confirm: '本当に削除していいですか？' } %></button></td>
+          <% end %>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+   <br>
+
+  </div>
+</div>
+<br>
+
+
+<div class="toukou"><button type="button" class="btn-outline-primary"><%= link_to '新しくビジョンを投稿する', new_future_vision_path %></button></div>

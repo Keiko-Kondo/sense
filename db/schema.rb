@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_28_153001) do
+ActiveRecord::Schema.define(version: 2021_01_31_122105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 2021_01_28_153001) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_current_issues_on_user_id"
   end
 
   create_table "future_visions", force: :cascade do |t|
@@ -54,8 +56,17 @@ ActiveRecord::Schema.define(version: 2021_01_28_153001) do
     t.string "expected"
     t.text "possible_method"
     t.string "address"
-    t.string "latitude"
-    t.string "longitude"
+    t.float "latitude"
+    t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_future_visions_on_user_id"
+  end
+
+  create_table "idea_powers", force: :cascade do |t|
+    t.integer "power_id"
+    t.integer "idea_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -64,6 +75,15 @@ ActiveRecord::Schema.define(version: 2021_01_28_153001) do
     t.string "title"
     t.text "idea"
     t.string "expected_power"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_ideas_on_user_id"
+  end
+
+  create_table "issue_ideas", force: :cascade do |t|
+    t.integer "current_issue_id"
+    t.integer "idea_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -87,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_01_28_153001) do
     t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_powers_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,13 +117,24 @@ ActiveRecord::Schema.define(version: 2021_01_28_153001) do
     t.string "email"
     t.string "address"
     t.string "password_digest"
-    t.string "icon"
+    t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  create_table "vision_ideas", force: :cascade do |t|
+    t.integer "future_vision_id"
+    t.integer "idea_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "comments", "future_visions"
+  add_foreign_key "current_issues", "users"
+  add_foreign_key "future_visions", "users"
+  add_foreign_key "ideas", "users"
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "powers", "users"
 end

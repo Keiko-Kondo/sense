@@ -13,11 +13,29 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :ideas do
-    collection do
-      post :confirm
+
+  # resources :ideas do
+  #      collection do
+  #        post :confirm
+  #      end
+  #  end
+
+  resources :current_issues do
+    resources :ideas do
+      collection do
+        post :confirm
+      end
     end
   end
+
+  # get '/ideas/new/:current_issue_id', to: 'ideas#new', as: :new_idea
+
+
+  # resources :ideas do
+  #   collection do
+  #     post :confirm
+  #   end
+  # end
 
   resources :future_visions do
     collection do
@@ -35,10 +53,16 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show, :edit, :update]
 
   resources :conversations do
     resources :messages
   end
-  
+
+  resources :issue_ideas, only: [:create, :destroy]
+
+  resources :vision_ideas, only: [:create, :destroy]
+
+  resources :idea_powers, only: [:create, :destroy]
+
 end

@@ -7,8 +7,8 @@ class CreateFutureVisions < ActiveRecord::Migration[5.2]
       t.string :expected
       t.text :possible_method
       t.string :address
-      t.string :latitude
-      t.string :longitude
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
   end

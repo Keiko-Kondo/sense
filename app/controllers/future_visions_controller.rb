@@ -3,6 +3,8 @@ before_action :set_future_vision, only: [:show, :edit, :update, :destroy]
 
   def index
     @future_visions = FutureVision.all
+    @future_visions_address = FutureVision.all.select('title', 'address', 'latitude', 'longitude')
+    gon.future_visions = @future_visions_address
   end
 
   def new
@@ -10,7 +12,7 @@ before_action :set_future_vision, only: [:show, :edit, :update, :destroy]
   end
 
   def create
-    @future_vision = FutureVision.new(future_vision_params)
+    @future_vision = current_user.future_visions.build(future_vision_params)
     if params[:back]
       render :new
     else
@@ -44,7 +46,7 @@ before_action :set_future_vision, only: [:show, :edit, :update, :destroy]
   end
 
   def confirm
-    @future_vision = FutureVision.new(future_vision_params)
+    @future_vision = current_user.future_visions.build(future_vision_params)
     render :new if @future_vision.invalid?
   end
 

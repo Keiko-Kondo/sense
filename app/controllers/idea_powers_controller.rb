@@ -1,0 +1,2 @@
+class IdeaPowersController < ApplicationController
+end

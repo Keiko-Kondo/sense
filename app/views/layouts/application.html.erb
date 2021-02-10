@@ -4,24 +4,58 @@
     <title>Sense0111</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= favicon_link_tag('favicon.ico') %>
 
+    <%= include_gon %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "#{key}") %>
-    <% end %>
+<header>
+ <%= image_tag 'sense.JPG', size: "70x70"%><p>sense</p>
+
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
+        <span class="sr-only">sense</span>
+        <span class="icon-bar">x</span>
+        <span class="icon-bar">x</span>
+        <span class="icon-bar">x</span>
+      </button> -->
+      <!-- <a class="navbar-brand" href="#">sense</a> -->
+        <!-- <img src="/assets/sense_logo.JPG" alt=""> -->
+
+        <nav aria-label="breadcrumb">
+         <ol class="breadcrumb">
+           <li class="breadcrumb-item"><a href="/">Home</a></li>
+           <li class="breadcrumb-item"><a href="/current_issues">いま</a></li>
+           <li class="breadcrumb-item"><a href="/ideas">せんす</a></li>
+           <li class="breadcrumb-item"><a href="/future_visions">みらい</a></li>
+           <li class="breadcrumb-item"><a href="/powers">ちから</a></li>
+
+
+
+
+
+
 
     <% if logged_in? %>
-      <%= link_to "Profile", user_path(current_user.id) %>
-      <%= link_to "Logout", session_path(current_user.id), method: :delete %>
+      <li><%= link_to "Profile", user_path(current_user.id) %></li>
+      <li><%= link_to "Logout", session_path(current_user.id), method: :delete %></li>
     <% else %>
-      <%= link_to "Sign up", new_user_path %>
-      <%= link_to "Login", new_session_path %>
+      <li><%= link_to "Sign up", new_user_path %></li>
+      <li><%= link_to "Login", new_session_path %></li>
     <% end %>
+      </ol>
+    </div>
+  </div>
+</nav>
 
+</header>
+
+  <body>
     <%= yield %>
+
   </body>
 </html>

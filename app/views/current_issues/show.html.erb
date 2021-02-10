@@ -1,3 +1,49 @@
+<div class="container">
+  <div class="row">
+
+
 <h1>課題詳細画面</h1>
+
+<div class="col-xs-6">
+<p>ジャンル:<%= @current_issue.genre %></p>
 <p>タイトル: <%= @current_issue.title %></p>
 <p>課題: <%= @current_issue.issue %></p>
+<p>登録者: <%= @current_issue.user.name %></p>
+<p>困っている人:<%= @current_issue.taker %></p>
+<p>助けることができるだろう人・ちから:<%= @current_issue.giver %></p>
+
+<p>地域:<%= @current_issue.address %></p>
+</div>
+
+<div class="col-xs-6">
+
+  <p>提案されたせんす</p>
+  <% @ideas.each do |idea| %>
+    <tr>
+      <td><%= idea.title %></td>
+      <td><%= idea.idea %></td>
+      <td><%= idea.expected_power %></td>
+    </tr>
+  <% end %>
+
+    
+
+
+
+
+
+
+
+<%= link_to 'この課題にせんすを提案する', new_current_issue_idea_path(@current_issue.id) %>
+
+
+
+
+
+
+
+
+</div>
+
+</div>
+</div>
