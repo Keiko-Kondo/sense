@@ -13,7 +13,7 @@
   <p>内容:<%= @current_issue.issue %></p>
   <p>困っている人:<%= @current_issue.taker %></p>
   <p>助けることができるだろう人・ちから:<%= @current_issue.giver %></p>
-  <p>考えられる解決策:<%= @current_issue.idea %></p>
+  
   <p>地域:<%= @current_issue.address %></p>
   <%= form.submit "登録" %>
   <%= form.submit "戻る", name: 'back' %>

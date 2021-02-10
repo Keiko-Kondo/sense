@@ -3,7 +3,7 @@ module IdeasHelper
     if action_name == 'new' || action_name == 'create'
       confirm_current_issue_ideas_path
     elsif action_name == 'edit'
-      edit_current_issue_idea_path
+      current_issue_idea_path
     end
   end
 end

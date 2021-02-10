@@ -1,4 +1,4 @@
-<%= form_with(model: @current_issue, local: true, url: choose_new_or_edit_current_issues do |form| %>
+<%= form_with(model: @current_issue, local: true, url: choose_new_or_edit_current_issues) do |form| %>
   <% if @current_issue.errors.any? %>
     <div id="error_explanation">
       <h2><%= @current_issue.errors.count %>件のエラーがあります。</h2>
@@ -51,11 +51,7 @@
 
   <div class="col-xs-6">
 
-  <div class="current_issue_idea">
-    <%= form.label :考えられる解決策 %>
-    <br>
-    <%= form.text_field :idea %>
-  </div>
+
   <div class="current_issue_address">
     <%= form.label :地域 %>
     <br>
@@ -64,7 +60,7 @@
   <br>
   <br>
   <br>
-  <%= form.submit :登録 %>
+  <%= form.submit %>
 <% end %>
 
 </div>

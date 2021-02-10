@@ -1,6 +1,6 @@
 class IdeasController < ApplicationController
   before_action :set_idea, only: [:show, :edit, :update, :destroy ]
-  before_action :set_current_issue, only: [:confirm ]
+  # before_action :set_current_issue, only: [:confirm ]
 
   def index
     @ideas = Idea.all
@@ -8,6 +8,10 @@ class IdeasController < ApplicationController
 
   def new
     @idea = Idea.new
+    @idea.issue_ideas.build
+
+
+
     # set_current_issue
     # @current_issue_id = params[:current_issue_id]
 
@@ -60,8 +64,9 @@ class IdeasController < ApplicationController
   end
 
   def confirm
+    @current_issue = CurrentIssue.find(params[:current_issue_id])
     @idea = current_user.ideas.build(idea_params)
-
+    # @current_issue = CurrentIssue.find(params[:current_issue_id])
     # ここから
 
     # @idea = current_user.ideas.build(idea_params)
@@ -77,7 +82,8 @@ class IdeasController < ApplicationController
 
   private
   def idea_params
-    params.require(:idea).permit(:title, :idea, :expected_power, [:current_issue_id])
+    # params.require(:idea).permit(:title, :idea, :expected_power, [:current_issue_id], current_issue_attributes: [:name])
+    params.require(:idea).permit(:title, :idea, :expected_power,issue_ideas_attributes: [:id])
   end
 
   def issue_idea_params

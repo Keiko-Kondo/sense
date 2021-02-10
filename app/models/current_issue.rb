@@ -12,10 +12,10 @@ class CurrentIssue < ApplicationRecord
   after_validation :geocode, if: :address_changed?
 
   belongs_to :user
+  # has_many :issue_ideas, dependent: :destroy
+  # has_many :through_ideas, through: :issue_ideas, source: :idea
+
+
   has_many :issue_ideas, dependent: :destroy
-  has_many :through_ideas, through: :issue_ideas, source: :idea
-
-
-  has_many :idea, inverse_of: :current_issue
-  accepts_nested_attributes_for :idea
+  has_many :ideas, :through => :issue_ideas
 end

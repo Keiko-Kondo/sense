@@ -1,0 +1,59 @@
+ja:
+  activerecord:
+    models:
+      comment: コメント
+      conversation: 会話
+      current_issue: いま
+      future_vision: みらい
+      idea: せんす
+      power: ちから
+      user: ユーザー
+    attributes:
+      comment: コメント
+      conversation: 会話
+      current_issue:
+        genre: ジャンル
+        title: 課題名
+        issue: 課題内容
+        taker: 困っている人
+        giver: 助けることができるだろう人・力
+        idea: 考えられる解決策
+        address: 場所
+      future_vision:
+        genre: ジャンル
+        title: ビジョン名
+        vision: ビジョン内容
+        expected: ビジョンを達成できるだろう人・ちから
+        possible_method: 考えられる達成方法
+        address: 場所
+      idea:
+        title: タイトル
+        idea: アイディア内容
+        expected_power: 欲しい骨
+      # power: ちから
+      #   genre: ジャンル
+      #   power: ちから
+      #   address: 場所
+      user:
+        title: タイトル
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+# ja:
+#   activerecord:
+#     models:
+#       blog: ブログ
+#       user: ユーザー
+#     attributes:
+#       blog:
+#         title: タイトル
+#         content: 内容
+#       user:
+#         title: タイトル
+#         name: 名前
+#         email: メールアドレス
+#         current_password: 現在のパスワード
+#         password: パスワード
+#         password_confirmation: 確認用パスワード
+#         remember_me: ログインを記憶

@@ -39,7 +39,8 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-     @ideas = @current_issue.through_ideas
+
+     @ideas = @current_issue.issue_ideas
   end
 
   def destroy
@@ -54,7 +55,7 @@ before_action :set_current_issue, only: [:show, :edit, :update, :destroy]
 
   private
   def current_issue_params
-    params.require(:current_issue).permit(:genre, :title, :issue, :taker, :giver, :idea, :address, :latitude, :longitude)
+    params.require(:current_issue).permit(:genre, :title, :issue, :taker, :giver, :address, :latitude, :longitude)
   end
 
   def set_current_issue

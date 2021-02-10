@@ -14,5 +14,8 @@ class Idea < ApplicationRecord
   has_many :through_powers, through: :idea_powers, source: :power
 
 
-  belongs_to :current_issue, inverse_of: :idea
+  has_many :issue_ideas, dependent: :destroy
+has_many :current_issues, :through => :issue_ideas
+accepts_nested_attributes_for :issue_ideas, allow_destroy: true
+
 end
