@@ -10,6 +10,11 @@
 <p>ジャンル: <%= @power.genre %></p>
 <p>ちから: <%= @power.power %></p>
 <p>登録者: <%= @power.user.name %></p>
+
+<% if @power.user.id != current_user.id %>
+  <%= link_to 'この人にメッセージを送る', conversations_path(sender_id: current_user.id, recipient_id:@power.user.id), method: :post %>
+<% end %>
+
 </div>
 <div class="col-xs-4">
   <p>せんすへの登録状況</p>

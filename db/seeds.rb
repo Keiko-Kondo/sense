@@ -14,3 +14,9 @@
                password: password,
                )
 end
+
+User.create!(name: "サンプル",
+               email: "sample@sample.com",
+               password: "123456",
+               password_confirmation: "123456",
+               )
