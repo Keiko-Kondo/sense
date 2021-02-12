@@ -1,5 +1,9 @@
 <h1>せんすの詳細</h1>
 <p>タイトル: <%= @idea.title %></p>
 <p>アイディア内容: <%= @idea.idea %></p>
-<p>登録者: <%= @idea.user.name %></p>
 <p>欲しい骨: <%= @idea.expected_power %></p>
+
+<p>登録者: <%= @idea.user.name %></p>
+<% if @idea.user.id != current_user.id %>
+  <%= link_to 'この人にメッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @idea.user.id), method: :post %>
+<% end %>
