@@ -1,4 +1,3 @@
-
 <p><%= notice %></p>
 
 <div class="container">
@@ -12,17 +11,18 @@
     <th>アイディア内容</th>
     <th>欲しい骨</th>
   </tr>
-
-  <% @ideas.each do |idea| %>
-    <tr>
-      <td><%= idea.title %></td>
-      <td><%= idea.idea %></td>
-      <td><%= idea.expected_power %></td>
-
-
-    </tr>
-  <% end %>
-
+<% @ideas.each do |idea| %>
+  <tr>
+    <td><%= idea.title %></td>
+    <td><%= idea.idea %></td>
+    <td><%= idea.expected_power %></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '詳細', idea_path(idea.id) %></button></td>
+      <% if idea.user == current_user %>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '編集', edit_idea_path(idea.id)%></button></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '削除', idea_path(idea.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></button></td>
+<% end %>
+  </tr>
+<% end %>
 
 
 </table>
@@ -30,4 +30,4 @@
 </div>
 </div>
 <br>
-<!-- <div class="toukou"><button type="button" class="btn-outline-primary"><%= link_to 'せんすの要を提案する', new_current_issue_idea_path %></button></div> -->
+<div class="toukou"><button type="button" class="btn-outline-primary"><%= link_to 'せんすの要を提案する', new_idea_path %></button></div>

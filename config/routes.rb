@@ -20,22 +20,22 @@ Rails.application.routes.draw do
   #      end
   #  end
 
-  resources :current_issues do
-    resources :ideas do
-      collection do
-        post :confirm
-      end
-    end
-  end
+  # resources :current_issues do
+  #   resources :ideas do
+  #     collection do
+  #       post :confirm
+  #     end
+  #   end
+  # end
 
   # get '/ideas/new/:current_issue_id', to: 'ideas#new', as: :new_idea
 
 
-  # resources :ideas do
-  #   collection do
-  #     post :confirm
-  #   end
-  # end
+  resources :ideas do
+    collection do
+      post :confirm
+    end
+  end
 
   resources :future_visions do
     collection do
