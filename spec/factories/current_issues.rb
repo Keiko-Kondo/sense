@@ -10,12 +10,4 @@ FactoryBot.define do
     address { '東京都千代田区' }
     user
   end
-  # factory :second_task, class: Task do
-  #   task_name { 'test_task2' }
-  #   details { 'test_details2' }
-  #   deadline { '2020-10-01' }
-  #   priority { '中' }
-  #   status { '完了' }
-  #   user
-  # end
 end

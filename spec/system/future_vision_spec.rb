@@ -19,3 +19,21 @@ describe 'ビジョン登録機能', type: :system do
     end
   end
 end
+
+RSpec.describe "GoogleMap", type: :system do
+  describe "GoogleMap が表示されているページ" do
+    context "GoogleMap の動作確認", js: true do
+      it "ピンをクリックするとinfowindow が表示されること" do
+        future_vision = FactoryBot.create(:future_vision)
+        visit new_session_path
+        fill_in 'Email', with: 'www@www.com'
+        fill_in 'Password', with: '123456'
+        click_on 'Log in'
+        visit future_visions_path
+        pin = find("map#gmimap0 area", visible: false)
+        pin.click
+        expect(page).to have_content '東京都千代田区'
+      end
+    end
+  end
+end
