@@ -4,20 +4,18 @@ describe 'いまある課題登録機能', type: :system do
     describe '新規作成機能' do
       context 'いまある課題を新規作成した場合' do
         it '作成した課題が表示される' do
-          user = FactoryBot.create(:user)
+          current_issue = FactoryBot.create(:current_issue)
+          # user = FactoryBot.create(:user)
           visit new_session_path
           fill_in 'Email', with: 'www@www.com'
           fill_in 'Password', with: '123456'
           click_on 'Log in'
-          task = FactoryBot.create(:current_issue)
           visit current_issues_path
           expect(page).to have_content '小学生にオンライン教育を'
-          expect(page).to have_content '小学生とその親御さん'
-          expect(page).to have_content 'エンジニアを教科書会社とで、、、'
+          expect(page).to have_content '小学生にオンライン教育を整備したい'
         end
       end
     end
-
 
 end
 
