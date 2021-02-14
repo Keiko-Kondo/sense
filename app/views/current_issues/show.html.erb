@@ -13,20 +13,22 @@
 <p>助けることができるだろう人・ちから:<%= @current_issue.giver %></p>
 
 <p>地域:<%= @current_issue.address %></p>
+<p>登録者: <%= @current_issue.user.name %></p>
+<% if @current_issue.user.id != current_user.id %>
+  <%= link_to 'この人にメッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @current_issue.user.id), method: :post %>
+<% end %>
 </div>
 
 <div class="col-xs-6">
 
-  <p>提案されたせんす</p>
+  <!-- <p>提案されたせんす</p>
   <% @ideas.each do |idea| %>
     <tr>
       <td><%= idea.title %></td>
       <td><%= idea.idea %></td>
       <td><%= idea.expected_power %></td>
     </tr>
-  <% end %>
-
-    
+  <% end %> -->
 
 
 
@@ -34,7 +36,10 @@
 
 
 
-<%= link_to 'この課題にせんすを提案する', new_current_issue_idea_path(@current_issue.id) %>
+
+
+
+ <!-- link_to 'この課題にせんすを提案する', new_current_issue_path(@current_issue.id)  -->
 
 
 

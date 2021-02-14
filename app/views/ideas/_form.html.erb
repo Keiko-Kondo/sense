@@ -1,6 +1,8 @@
-<%# <%= form_with(model:@idea, local: true, url: choose_new_or_edit_idea ) do |form| %> %>
-<%= form_with(model:@idea, local: true, url: confirm_current_issue_ideas_path ) do |form| %>
 
+
+
+
+<%= form_with(model: @idea, local: true, url: choose_new_or_edit_idea ) do |form| %>
   <% if @idea.errors.any? %>
     <div id="error_explanation">
       <h2><%= @idea.errors.count %>件のエラーがあります。</h2>
@@ -35,7 +37,7 @@
     <%= form.text_field :expected_power %>
   </div>
 <br>
-   <%# form.hidden_field :current_issue_id  %>
+
 
   <%= form.submit %>
 
@@ -43,6 +45,6 @@
 
 <% end %>
 <br>
-<%= link_to "一覧画面に戻る", current_issue_ideas_path%>
+<%= link_to "一覧画面に戻る", ideas_path%>
 
   </div>
