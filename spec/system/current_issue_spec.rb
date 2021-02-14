@@ -6,14 +6,14 @@ describe 'いまある課題登録機能', type: :system do
         it '作成した課題が表示される' do
           user = FactoryBot.create(:user)
           visit new_session_path
-          fill_in 'Email', with: 'admin@admin.com'
-          fill_in 'Password', with: '111111'
+          fill_in 'Email', with: 'www@www.com'
+          fill_in 'Password', with: '123456'
           click_on 'Log in'
-          task = FactoryBot.create(:second_task, task_name: 'タスク例', user: user)
-          visit tasks_path
-          expect(page).to have_content 'タスク例'
-          expect(page).to have_content '2020-10-01'
-          expect(page).to have_content '完了'
+          task = FactoryBot.create(:current_issue)
+          visit current_issues_path
+          expect(page).to have_content '小学生にオンライン教育を'
+          expect(page).to have_content '小学生とその親御さん'
+          expect(page).to have_content 'エンジニアを教科書会社とで、、、'
         end
       end
     end
@@ -21,7 +21,17 @@ describe 'いまある課題登録機能', type: :system do
 
 end
 
-#   describe '一覧表示機能' do
+
+#
+# genre { '教育' }
+# title { '小学生にオンライン教育を' }
+# issue { '小学生にオンライン教育を整備したい' }
+# taker { '小学生とその親御さん' }
+# giver { 'エンジニア' }
+# idea { 'エンジニアを教科書会社とで、、、' }
+# address { '東京都千代田区' }
+#
+# #   describe '一覧表示機能' do
 #     context '一覧画面に遷移した場合' do
 #       it '作成済みのタスク一覧が表示される' do
 #         task = FactoryBot.create(:task)

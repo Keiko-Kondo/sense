@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
+  before_action :authenticate_user, only: [:index]
 
   # before_action :authenticate_user
 
@@ -12,12 +13,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def authenticate_user
-  #   if current_user == nil
-  #     flash[:notice] = 'ログインしてください'
-  #     redirect_to new_session_path
-  #   end
-  # end
+  def authenticate_user
+    if current_user == nil
+      flash[:notice] = 'ログインしてください'
+      redirect_to new_session_path
+    end
+  end
 
 
 end
