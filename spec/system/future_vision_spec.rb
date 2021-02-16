@@ -37,3 +37,17 @@ RSpec.describe "GoogleMap", type: :system do
     end
   end
 end
+
+RSpec.describe "コメント機能", type: :system do
+  describe "みらいビジョンの詳細画面" do
+    context "コメント機能確認", js: true do
+      it "コメントの登録ボタンを押すとコメントが表示されること" do
+        future_vision = FactoryBot.create(:future_vision)
+        visit future_vision_path(future_vision.id)
+        fill_in 'Content', with: 'コメント内容だよ'
+        click_on '登録する'
+        expect(page).to have_content 'コメント内容だよ'
+      end
+    end
+  end
+end

@@ -36,6 +36,27 @@ RSpec.describe "GoogleMap", type: :system do
   end
 end
 
+RSpec.describe "メッセージ機能", type: :system do
+  describe "メッセージ機能" do
+    context "メッセージ機能 の動作確認", js: true do
+      it "作成したメッセージが が表示されること" do
+        current_issue = FactoryBot.create(:current_issue)
+        second_user = FactoryBot.create(:second_user)
+        visit new_session_path
+        fill_in 'Email', with: '321@321.com'
+        fill_in 'Password', with: '123456'
+        click_on 'Log in'
+        visit current_issue_path(current_issue.id)
+        click_on 'この人にメッセージを送る'
+        fill_in 'messe', with: 'メッセージだよ'
+        click_on 'メッセージを送る'
+        expect(page).to have_content 'メッセージだよ'
+      end
+    end
+  end
+end
+
+
 
 #
 # genre { '教育' }
