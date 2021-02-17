@@ -23,7 +23,7 @@
 </div>
 <%= form_with(model: [@conversation, @message]) do |f| %>
   <div class="field">
-    <%= f.text_area :body, class: "form-control" %>
+    <%= f.text_area :body, class: "form-control", id: "messe" %>
   </div>
     <%= f.text_field :user_id, value: current_user.id, type: "hidden"  %>
   <div>

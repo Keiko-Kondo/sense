@@ -4,22 +4,58 @@ describe 'いまある課題登録機能', type: :system do
     describe '新規作成機能' do
       context 'いまある課題を新規作成した場合' do
         it '作成した課題が表示される' do
-          user = FactoryBot.create(:user)
+          current_issue = FactoryBot.create(:current_issue)
+          # user = FactoryBot.create(:user)
           visit new_session_path
           fill_in 'Email', with: 'www@www.com'
           fill_in 'Password', with: '123456'
           click_on 'Log in'
-          task = FactoryBot.create(:current_issue)
           visit current_issues_path
           expect(page).to have_content '小学生にオンライン教育を'
-          expect(page).to have_content '小学生とその親御さん'
-          expect(page).to have_content 'エンジニアを教科書会社とで、、、'
+          expect(page).to have_content '小学生にオンライン教育を整備したい'
         end
       end
     end
-
-
 end
+
+RSpec.describe "GoogleMap", type: :system do
+  describe "GoogleMap が表示されているページ" do
+    context "GoogleMap の動作確認", js: true do
+      it "ピンをクリックするとinfowindow が表示されること" do
+        current_issue = FactoryBot.create(:current_issue)
+        visit new_session_path
+        fill_in 'Email', with: 'www@www.com'
+        fill_in 'Password', with: '123456'
+        click_on 'Log in'
+        visit current_issues_path
+        pin = find("map#gmimap0 area", visible: false)
+        pin.click
+        expect(page).to have_content '東京都千代田区'
+      end
+    end
+  end
+end
+
+RSpec.describe "メッセージ機能", type: :system do
+  describe "メッセージ機能" do
+    context "メッセージ機能 の動作確認", js: true do
+      it "作成したメッセージが が表示されること" do
+        current_issue = FactoryBot.create(:current_issue)
+        second_user = FactoryBot.create(:second_user)
+        visit new_session_path
+        fill_in 'Email', with: '321@321.com'
+        fill_in 'Password', with: '123456'
+        click_on 'Log in'
+        visit current_issue_path(current_issue.id)
+        click_on 'この人にメッセージを送る'
+        fill_in 'messe', with: 'メッセージだよ'
+        click_on 'メッセージを送る'
+        expect(page).to have_content 'メッセージだよ'
+      end
+    end
+  end
+end
+
 
 
 #

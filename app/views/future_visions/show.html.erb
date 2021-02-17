@@ -1,4 +1,4 @@
-b<p id="notice"><%= notice %></p>
+<p id="notice"><%= notice %></p>
 
 <h4>詳細画面</h4>
 
@@ -10,9 +10,14 @@ b<p id="notice"><%= notice %></p>
 
   <div class="col-xs-4">
   <div class="future_vision-text">
+    <p><strong>ジャンル</strong>: <%= @future_vision.genre %></p>
     <p><strong>タイトル</strong>：<%= @future_vision.title %></p>
     <p><strong>ビジョン</strong>：<%= @future_vision.vision %></p>
     <p><strong>登録者</strong>: <%= @future_vision.user.name %></p>
+    <p><strong>ビジョンを達成できるであろう人・ちから</strong>: <%= @future_vision.expected %></p>
+    <p><strong>考えられる達成方法</strong>: <%= @future_vision.possible_method %></p>
+    <p><strong>場所</strong>: <%= @future_vision.address %></p>
+
 <%#
 link_to '編集', edit_future_vision_path(@future_vision)  %>
     <%= link_to '戻る', future_visions_path %>

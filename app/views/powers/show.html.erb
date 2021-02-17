@@ -9,6 +9,7 @@
   <p>ちから詳細</p>
 <p>ジャンル: <%= @power.genre %></p>
 <p>ちから: <%= @power.power %></p>
+<p>住所: <%= @power.address %></p>
 <p>登録者: <%= @power.user.name %></p>
 
 <% if @power.user.id != current_user.id %>

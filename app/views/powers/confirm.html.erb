@@ -3,9 +3,9 @@
   <%= form.hidden_field :genre %>
   <%= form.hidden_field :power %>
   <%= form.hidden_field :address %>
-  <p>タイトル:<%= @power.genre %></p>
-  <p>ビジョン:<%= @power.power %></p>
-  <p>ビジョン:<%= @power.address %></p>
+  <p>ジャンル:<%= @power.genre %></p>
+  <p>ちから:<%= @power.power %></p>
+  <p>住所:<%= @power.address %></p>
   <%= form.submit  "登録する" %>
   <%= form.submit "戻る", name: 'back' %>
 <% end %>

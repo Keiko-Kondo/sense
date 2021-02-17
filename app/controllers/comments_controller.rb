@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
       format.js { render :index }
     end
   end
-  
+
    private
    def comment_params
      params.require(:comment).permit(:future_vision_id, :content)
