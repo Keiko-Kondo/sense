@@ -1,7 +1,7 @@
 <h1>編集</h1>
 <% if @user.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+    <h2><%=  @user.errors.count %> 件のエラーがあります</h2>
     <ul>
     <% @user.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -26,14 +26,13 @@
   <br>
   <%= f.password_field :password_confirmation %>
   <br>
-  <%= f.label :image %>
-  <br>
+  <%= f.label :アイコン %>
   <%= image_tag(@user.image.url) if @user.image && @user.image.url %>
   <br>
   <%= f.file_field :image %>
   <br>
   <%= f.hidden_field :image_cache %>
   <br>
-  <%= f.submit "Create my account" %>
+  <%= f.submit "登録" %>
   <br>
 <% end %>
