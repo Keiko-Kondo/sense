@@ -10,11 +10,11 @@ RSpec.describe CurrentIssue, type: :model do
   #   expect(movie).to be_valid
   #   end
   # # タイトルがなければ無効な状態であること
-#   it "タイトルがなければ無効な状態であること" do
-#   current_issue = CurrentIssue.new(title: nil)
-#   current_issue.valid?
-#   expect(current_issue.errors[:title]).to include("を入力してください")
-# end
+  it "タイトルがなければ無効な状態であること" do
+  current_issue = CurrentIssue.new(title: nil)
+  current_issue.valid?
+  expect(current_issue.errors[:title]).to include("を入力してください")
+end
   # 重複したタイトルなら無効な状態であること
 #   it "is invalid with a duplicate title" do
 #   Movie.create(
